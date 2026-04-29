@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Threat Detection Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/assets/app.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">Real-Time Threat Detection</p>
+          <h1>Operational security signals, triage, and response in one control room.</h1>
+          <p class="hero-text">
+            This dashboard sits on top of your Python pipeline and SQLite store. Run simulations,
+            upload event files, inspect live metrics, and record analyst feedback from the browser.
+          </p>
+        </div>
+        <div class="hero-actions">
+          <button id="simulateButton" class="action primary">Run Simulation</button>
+          <button id="demoButton" class="action secondary">Process Demo Event</button>
+        </div>
+      </header>
+
+      <main class="dashboard-grid">
+        <section class="panel metric-panel">
+          <div class="panel-heading">
+            <h2>Live Totals</h2>
+            <span id="statusBadge" class="badge">Loading</span>
+          </div>
+          <div class="metrics">
+            <article class="metric-card">
+              <span>Total Events</span>
+              <strong id="totalEvents">0</strong>
+            </article>
+            <article class="metric-card">
+              <span>Attack</span>
+              <strong id="attackCount">0</strong>
+            </article>
+            <article class="metric-card">
+              <span>Suspicious</span>
+              <strong id="suspiciousCount">0</strong>
+            </article>
+            <article class="metric-card">
+              <span>Normal</span>
+              <strong id="normalCount">0</strong>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel overview-panel">
+          <div class="panel-heading">
+            <h2>Response Overview</h2>
+          </div>
+          <div class="overview-grid">
+            <div class="overview-card">
+              <span>Average Confidence</span>
+              <strong id="averageConfidence">0.000</strong>
+            </div>
+            <div class="overview-card">
+              <span>Feedback Items</span>
+              <strong id="feedbackCount">0</strong>
+            </div>
+            <div class="overview-card wide">
+              <span>Blocked Sources</span>
+              <div id="blockedSources" class="chip-row"></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel chart-panel">
+          <div class="panel-heading">
+            <h2>Action Mix</h2>
+          </div>
+          <div id="actionBars" class="bar-stack"></div>
+        </section>
+
+        <section class="panel protocol-panel">
+          <div class="panel-heading">
+            <h2>Protocol Volume</h2>
+          </div>
+          <div id="protocolBars" class="bar-stack"></div>
+        </section>
+
+        <section class="panel trend-panel">
+          <div class="panel-heading">
+            <h2>Detection Trend</h2>
+            <span class="mini-note">Recent hourly buckets</span>
+          </div>
+          <div id="trendChart" class="trend-chart"></div>
+        </section>
+
+        <section class="panel upload-panel">
+          <div class="panel-heading">
+            <h2>File Ingestion</h2>
+            <span class="mini-note">Upload CSV or JSONL</span>
+          </div>
+          <form id="uploadForm" class="upload-form">
+            <input id="fileInput" type="file" accept=".csv,.json,.jsonl" required />
+            <button class="action secondary" type="submit">Process Uploaded File</button>
+          </form>
+          <p id="uploadMessage" class="feedback-message"></p>
+        </section>
+
+        <section class="panel event-panel">
+          <div class="panel-heading">
+            <h2>Recent Events</h2>
+          </div>
+          <div id="eventList" class="event-list"></div>
+        </section>
+
+        <section class="panel feedback-panel">
+          <div class="panel-heading">
+            <h2>Analyst Feedback</h2>
+          </div>
+          <form id="feedbackForm" class="feedback-form">
+            <label>
+              Event ID
+              <input id="eventIdInput" name="event_id" type="text" placeholder="Paste event ID" required />
+            </label>
+            <label>
+              Actual Label
+              <select id="actualLabelInput" name="actual_label">
+                <option value="normal">Normal</option>
+                <option value="suspicious">Suspicious</option>
+                <option value="attack">Attack</option>
+              </select>
+            </label>
+            <label>
+              Notes
+              <textarea id="notesInput" name="notes" rows="4" placeholder="Analyst notes"></textarea>
+            </label>
+            <button class="action primary" type="submit">Save Feedback</button>
+          </form>
+          <p id="feedbackMessage" class="feedback-message"></p>
+        </section>
+      </main>
+    </div>
+    <script src="/assets/app.js"></script>
+  </body>
+</html>

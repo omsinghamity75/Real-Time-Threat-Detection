@@ -1,0 +1,9 @@
+[project]
+name = "real-time-threat-detection"
+version = "0.2.0"
+description = "Local end-to-end threat detection pipeline with persistence and reporting."
+requires-python = ">=3.10"
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]

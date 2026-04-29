@@ -1,0 +1,4 @@
+source_type,source_ip,destination_ip,source_port,destination_port,protocol,packet_size,packets_per_minute,device_id
+network_traffic,10.0.0.5,172.16.0.10,51514,443,TCP,1480,920,edge-gateway-01
+system_log,192.168.1.20,192.168.1.1,49832,22,TCP,1350,1500,workstation-22
+iot_device,172.20.1.99,172.20.1.10,1883,1883,MQTT,220,80,sensor-99
