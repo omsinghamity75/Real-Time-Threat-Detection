@@ -111,9 +111,4 @@ Optional fields:
 
 See [data/sample_events.csv](C:/Users/Lenovo/OneDrive/Desktop/real%20time%20threat%20detection/data/sample_events.csv) and [data/sample_events.jsonl](C:/Users/Lenovo/OneDrive/Desktop/real%20time%20threat%20detection/data/sample_events.jsonl).
 
-## Next Expansion Points
 
-- Replace file ingestion with Kafka consumers and producers.
-- Swap the baseline policy with a trained DQN model.
-- Add REST or WebSocket APIs for live monitoring.
-- Connect the response layer to an actual firewall or SIEM.
